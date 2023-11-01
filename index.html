@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Generator</title>
+    <style>
+        #generateButton {
+            background-color: red; /* Cor de fundo vermelha */
+            color: white; /* Cor do texto branca */
+            border: none; /* Remover a borda */
+            padding: 10px 20px; /* Espaçamento interno do botão */
+            font-size: 16px; /* Tamanho da fonte */
+            font-family: "Arial", sans-serif; /* Fonte da família */
+            cursor: pointer; /* Cursor de mão ao passar o mouse */
+        }
+
+        #results {
+            font-size: 18px; /* Tamanho da fonte para os resultados */
+            font-family: "Verdana", sans-serif; /* Fonte da família para os resultados */
+            color: blue; /* Cor do texto dos resultados em azul */
+        }
+    </style>
+</head>
+<body>
+    <button id="generateButton">Gerar Pets</button>
+    <div id="results"></div>
+
+    <script>
+        function generatePets() {
+            var petIncomum = 0;
+            var petRaro = 0;
+            var petEpico = 0;
+
+            for (var i = 0; i < 1100; i++) {
+                var random = Math.random(); // Gera um número aleatório entre 0 e 1
+
+                if (random < 0.9) { // 90% de chance para petIncomum
+                    petIncomum++;
+                } else if (random < 0.99) { // 10% de chance para petRaro
+                    petRaro++;
+                } else { // 0.01% de chance para petEpico
+                    petEpico++;
+                }
+            }
+
+            var resultsDiv = document.getElementById("results");
+            resultsDiv.innerHTML = "Total de petIncomum: " + petIncomum + "<br>";
+            resultsDiv.innerHTML += "Total de petRaro: " + petRaro + "<br>";
+            resultsDiv.innerHTML += "Total de petEpico: " + petEpico;
+        }
+
+        document.getElementById("generateButton").addEventListener("click", generatePets);
+    </script>
+</body>
+</html>
